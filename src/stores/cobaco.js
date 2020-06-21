@@ -24,7 +24,7 @@ styles.menu = {
   textAlign: "center",
   left: 0,
   right: 0,
-  top: 100,
+  top: "120px",
   bottom: 0
 };
 
