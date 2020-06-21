@@ -8,8 +8,13 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
+<<<<<<< Updated upstream
           Edit pureun and save to reload.
         </p>
+=======
+          and save to reload.
+        </p> hahaha
+>>>>>>> Stashed changes
         <a
           className="App-link"
           href="https://reactjs.org"
