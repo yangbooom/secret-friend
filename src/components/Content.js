@@ -8,10 +8,10 @@ import CobacoMenu from './stores/cobaco'
 const Content = () => {
   return (
     <Switch>
-      <Route path="/stores/ratinol" component={RatinolMenu} />
-      <Route path="/stores/burgerking" component={BurgerKingMenu} />
-      <Route path="/stores/chinese" component={ChineseMenu} />
-      <Route path="/stores/cobaco" component={CobacoMenu} />
+      <Route path="/home/ratinol" component={RatinolMenu} />
+      <Route path="/home/burgerking" component={BurgerKingMenu} />
+      <Route path="/home/chinese" component={ChineseMenu} />
+      <Route path="/home/cobaco" component={CobacoMenu} />
     </Switch>
   )
 }

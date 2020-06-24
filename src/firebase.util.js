@@ -17,8 +17,6 @@ export const auth = firebase.auth();
 // googleProvider.setCustomParameters({ prompt: 'select_account' });
 // export const signInWithGoogle = () => auth.signInWithPopup(googleProvider);
 
-
-
 const uiConfig = {
   signInSuccessUrl: 'home',
   signInFlow: 'popup',
@@ -67,24 +65,75 @@ export function writeUserData(userID, name) {
 }
 
 export function writeAccount(userID, name, accountNumber, bankName) {
-  firebase.database().ref('users/'+userID).set({
+  firebase.database().ref(`users/${userID}`).set({
     ID: userID,
-    'name': name,
-    'accountNumber': accountNumber,
-    'bankName': bankName,
+    name,
+    accountNumber,
+    bankName,
+  });
+  console.log(userID);
+}
+
+export function writeOrder(userID, brand, time, price) {
+  firebase.database().ref(`users/${userID}`).set({
+    ID: userID,
+    // menu,
+    brand,
+    time,
+    // foodNumber,
+    price,
   });
 }
 
-export function writeOrder(userID, brand, menu, time, foodNumber){
-  firebase.database().ref('orders/'+brand+time+'/'+userID).push({
-    ID: userID,
-    'menu': menu,
-    'brand': brand,
-    'time': time,
-    'foodNumber': foodNumber,
-  })
+// export function writeOrder(userID, brand, time, price) {
+//   firebase.database().ref(`orders/${brand}${time}/${userID}`).push({
+//     ID: userID,
+//     // menu,
+//     brand,
+//     time,
+//     // foodNumber,
+//     price,
+//   });
+// }
+
+export function readPrice(userID) {
+  const row = [];
+  // const a = firebase.database().ref('users/'+userID).once('value');
+  firebase.database().ref(`users/${userID}`).once('value')
+    .then((snapshot) => {
+      // row.push(snapshot.val());
+      console.log(snapshot.val().price)
+    });
+  // console.log(Object.values()
+  return (row);
 }
 
+
+export async function readOrder(brand, time) {
+  let orders = [];
+  firebase.database().ref(`orders/${brand}${time}`).once('value')
+    .then((snapshot) => snapshot.val())
+    .then((res) => Object.values(res))
+    .then((res) => {
+      orders = res;}
+      );
+    //   snapshot.forEach((child) => {
+    //     orders= (Object.values(child.val()));
+    //     console.log(Object.values(child.val()))
+    //   });
+    // });
+  console.log(orders,11);
+  return (orders);
+}
+
+export function readPayment(brand, time, userID) {
+  const orders = readOrder(brand, time);
+  // console.log('orders', orders)
+  orders.forEach((order) => {
+    console.log('1')
+  });
+  // const {ID, brand_, time_, price} = orders;
+}
 
 export default firebase;
 // 혹시 전체 라이브러리가 필요할지도 모르기 때문에 firebase도 export 해준다.
