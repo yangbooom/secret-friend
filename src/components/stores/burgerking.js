@@ -28,7 +28,7 @@ class BurgerKingMenu extends Component {
         bankName: '카카오뱅크',
         bankAccountNo: '3333070047832',
         amount: `${amount}`,
-        message: '비밀친구를 만나시겠습니까?',
+        message: '비밀친구만나기',
       }),
       redirect: 'follow',
     }).then((res) => res.json());
