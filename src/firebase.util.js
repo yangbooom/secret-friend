@@ -19,7 +19,7 @@ export const auth = firebase.auth();
 
 
 const uiConfig = {
-  signInSuccessUrl: 'www.google.com',
+  signInSuccessUrl: 'home',
   signInFlow: 'popup',
   signInOptions: [
     // Leave the lines as is for the providers you want to offer your users.
