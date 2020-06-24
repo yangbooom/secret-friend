@@ -129,7 +129,7 @@ handleDecrease = (e) => {
         const {ddeok, kimbab, intestine, totalCost, pickedTime} =this.state;
 
         const makeOrder = () => {
-          writeOrder('Nox9260J7pZaZY2IpVu7OKIKigB2', 'ratinol', pickedTime, totalCost)
+          writeOrder(auth.currentUser.uid, 'ratinol', pickedTime, totalCost)
           this.getLink(totalCost)
             .then(res=> {
               this.link = res.success.link;

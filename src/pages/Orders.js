@@ -9,7 +9,7 @@ const Orders = () => {
   const a = readOrder();
   
   return(
-     <Button onClick={() => {console.log(a) }}>결제정보 얻기</Button>
+     <Button onClick={() => {console.log(readOrder().then(res => res)) }}>결제정보 얻기</Button>
   )
 
 };

@@ -111,8 +111,8 @@ export function readOrder() {
   return firebase.database().ref('users').once('value')
     .then((snapshot) => {
       // row.push(snapshot.val());
-      console.log(snapshot.val());
-      return snapshot.val();
+      // console.log(snapshot.val(),111);
+      snapshot.val();
     });
 }
 
