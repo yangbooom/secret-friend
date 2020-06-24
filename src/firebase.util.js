@@ -96,33 +96,35 @@ export function writeOrder(userID, brand, time, price) {
 //   });
 // }
 
-export function readAccount(userID) {
+export function readPrice(userID) {
   const row = [];
   // const a = firebase.database().ref('users/'+userID).once('value');
   firebase.database().ref(`users/${userID}`).once('value')
     .then((snapshot) => {
-      row.push(snapshot.val());
+      // row.push(snapshot.val());
+      console.log(snapshot.val().price)
     });
-  console.log(row);
+  // console.log(Object.values()
   return (row);
 }
 
-// export async function readOrder(brand, time) {
-//   let orders = [];
-//   firebase.database().ref(`orders/${brand}${time}`).once('value')
-//     .then((snapshot) => snapshot.val())
-//     .then((res) => Object.values(res))
-//     .then((res) => {
-//       orders = res;}
-//       );
-//     //   snapshot.forEach((child) => {
-//     //     orders= (Object.values(child.val()));
-//     //     console.log(Object.values(child.val()))
-//     //   });
-//     // });
-//   console.log(orders,11);
-//   return (orders);
-// }
+
+export async function readOrder(brand, time) {
+  let orders = [];
+  firebase.database().ref(`orders/${brand}${time}`).once('value')
+    .then((snapshot) => snapshot.val())
+    .then((res) => Object.values(res))
+    .then((res) => {
+      orders = res;}
+      );
+    //   snapshot.forEach((child) => {
+    //     orders= (Object.values(child.val()));
+    //     console.log(Object.values(child.val()))
+    //   });
+    // });
+  console.log(orders,11);
+  return (orders);
+}
 
 export function readPayment(brand, time, userID) {
   const orders = readOrder(brand, time);
