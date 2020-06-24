@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
-import { Home, About, LandingPage, LoginPage, SendMoney } from 'pages';
+import { Home, About, LandingPage, LoginPage, SendMoney, Orders } from 'pages';
 
 class App extends Component {
   render() {
@@ -12,6 +12,7 @@ class App extends Component {
         <Route path="/landing" component={LandingPage} />
         <Route path="/login" component={LoginPage} />
         <Route path="/sendmoney" component={SendMoney} />
+        <Route path="/orders" component={Orders} />
       </div>
     );
   }
