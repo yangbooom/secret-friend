@@ -150,7 +150,7 @@ handleDecrease = (e) => {
     }
 }
 
-// const styles = {};
+const styles = {};
 
 styles.menu = {
   textAlign: 'center',
