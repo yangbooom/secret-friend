@@ -7,6 +7,7 @@ import {
 // import api from '../../Api.js'
 
 class BurgerKingMenu extends Component {
+  // time=
 
   link ='';
   scheme='';
@@ -40,7 +41,7 @@ class BurgerKingMenu extends Component {
         steak: 0,
         orderQuantity: 0,
         totalCost: 0,
-        pickedTime: null
+        pickedTime: '21:00',
     }
 
     handleIncrease = (e) => {

@@ -31,13 +31,20 @@ function LoginPage() {
   }, [validation]);
 
   return (
-    <div>
+    <div  style={{
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'space-around',
+      alignItems: 'center',
+      marginTop: '30px',
+      position: 'relative',
+    }}>
       <h1>
         나랑..
         <del>야식</del>
         비밀친구 할래?
       </h1>
-      <LoginImage style={{ width: 500, padding: 30 }} />
+      <LoginImage style={{ width: '250px', padding: 30 }} />
       <div id="firebaseui-auth-container" />
       {/* <button onClick={signInWithGoogle}>Login</button> */}
       {/* {loginCheck} */}
@@ -49,7 +56,7 @@ function LoginPage() {
         </div>
       ) : (
         <div>
-          <h1> 로그인 하셔야 합니다. </h1>
+          {/* <h1> 로그인 하셔야 합니다. </h1> */}
           {/* <button onClick={() => {
           signInWithGoogle();
           loginCheck();

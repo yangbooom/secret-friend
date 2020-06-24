@@ -41,7 +41,7 @@ class RatinolMenu extends Component {
         intestine: 0,
         orderQuantity: 0,
         totalCost: 0,
-        pickedTime: null
+        pickedTime: '21:00',
         
     }
 
@@ -190,10 +190,6 @@ handleDecrease = (e) => {
                   <Button variant="outlined" 
                           onClick={makeOrder} >
                           결제하기
-                  </Button>
-                  <Button variant="outlined" 
-                          href="/sendmoney" >
-                          주문확인
                   </Button>
 
                   </div>

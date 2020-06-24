@@ -39,7 +39,7 @@ class ChineseMenu extends Component {
         friedrice: 0,
         orderQuantity: 0,
         totalCost: 0,
-        pickedTime: null
+        pickedTime: '21:00',
     }
 
     handleIncrease = (e) => {
