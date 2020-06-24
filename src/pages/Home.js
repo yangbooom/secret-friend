@@ -7,10 +7,13 @@ const Home = () => {
 
   return (
     <div>
-      <Content />
+      <div>
       <StoreList />
+      </div>
+      <div style={{marginTop:"150px"}}>
+      <Content />
+      </div>
     </div>
- 
   );
 };
 
