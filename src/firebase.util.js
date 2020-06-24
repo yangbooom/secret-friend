@@ -84,6 +84,7 @@ export function writeOrder(userID, brand, menu, time, foodNumber){
   })
 }
 
+export function readPayer
 
 export default firebase;
 // 혹시 전체 라이브러리가 필요할지도 모르기 때문에 firebase도 export 해준다.

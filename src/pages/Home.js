@@ -6,18 +6,7 @@ import {
 } from '../firebase.util';
 
 const Home = () => {
-  const [validation, setValidation] = useState(null);
-  const user = auth.currentUser;
-  const loginCheck = () => {
-    auth.onAuthStateChanged((user) => {
-      if (user) {
-        setValidation(true);
-        // console.log('log in with', user.email);
-      } else {
-        setValidation(false);
-      }
-    });
-  };
+
 
 
 
