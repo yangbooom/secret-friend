@@ -1,15 +1,12 @@
-/* eslint-disable react/button-has-type */
 /* eslint-disable react/jsx-filename-extension */
-import React, { useState, useEffect } from 'react';
-import './App.css';
+import React, { useState, useEffect, Components } from 'react';
+import '../App.css';
 import {
   signInWithGoogle, auth, logout, writeUserData, uiLoader,
-} from './firebase.util';
-// import LoginModule from './LoginModule';
-// import styles from './styles';
-// firebase.initializeApp(firebaseConfig)
+} from '../firebase.util';
+import { ReactComponent as LandingImage } from '../img/landing_image.svg';
 
-function App() {
+function LandingPage() {
   const [validation, setValidation] = useState(null);
   const user = auth.currentUser;
   console.log(auth.currentUser);
@@ -20,61 +17,53 @@ function App() {
       if (user) {
         setValidation(true);
         // console.log('log in with', user.email);
-        // return
-        // return <div><button onClick={writeUserData(user.email, name)}>change</button></div>;
       } else {
         setValidation(false);
       }
       console.log(auth.currentUser);
       // return (validation);
       // setValidation(false);
-
-    // // return (
-    //   <div>
-    //     <h1> 로그인 하셔야 합니다. </h1>
-    //     <button onClick={signInWithGoogle}>Login</button>
-    //   </div>
-    // );
     });
   };
 
-  // window.recaptchaVerifier = new auth.RecaptchaVerifier('phone-login', {
-  //   size: 'invisible',
-  //   callback(response) {
-  //   // reCAPTCHA solved, allow signInWithPhoneNumber.
-  //     onSignInSubmit();
-  //   },
-  // });
-
   useEffect(() => {
+    // loginCheck();
   }, [validation]);
 
   return (
-    <div className="App">
+    <div>
+      <h1>
+        나랑..
+        <del>야식</del>
+        비밀친구 할래?
+      </h1>
+      <LandingImage style={{ width: 500, padding: 30 }} />
+      <div id="firebaseui-auth-container" />
       {/* <button onClick={signInWithGoogle}>Login</button> */}
       {/* {loginCheck} */}
       {auth.currentUser !== null ? (
         <div>
           <button id="submit" onClick={writeUserData(user.email, name)}>submit</button>
+          <button onClick={()=> console.log(user,name)}>submit</button>
           <button onClick={logout}>logout</button>
         </div>
       ) : (
         <div>
           <h1> 로그인 하셔야 합니다. </h1>
-          <button onClick={() => {
-            signInWithGoogle();
-            loginCheck();
-          }}
-          >
-            Login
-          </button>
+          {/* <button onClick={() => {
+          signInWithGoogle();
+          loginCheck();
+        }}
+        >
+          Login
+        </button> */}
           {/* <LoginModule/> */}
-          <button onClick={loginCheck}>LoginCheck</button>
-          <div id="firebaseui-auth-container" />
+          {/* <button onClick={loginCheck}>LoginCheck</button> */}
+
         </div>
       )}
     </div>
   );
 }
 
-export default App;
+export default LandingPage;
