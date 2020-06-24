@@ -1,12 +1,13 @@
 import React, { Component } from 'react'; 
-import { ReactComponent as HomeImage } from './whichone.png';
 
 class Home extends Component { 
 
     render() { 
         return ( 
             <div style={{textAlign:'center'}}> 
-               <img src="https://i.ibb.co/YB6Qsp1/whichone.png" width="300px" alt="home"></img>
+                <h2>오늘 뭐먹지?</h2>
+                <h3>메뉴를 골라주세요</h3>
+                <img src="https://i.ibb.co/YB6Qsp1/whichone.png" width="300px" alt="home"></img>
             </div> 
         ); 
     } 

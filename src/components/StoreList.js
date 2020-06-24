@@ -42,11 +42,9 @@ const StoreList = () => (
 const styles = {};
 
 styles.home = {
-  textAlign: 'center',
   display: 'flex',
   top: '60px',
   bottom: '20px',
-  justifyContent: 'center',
   marginLeft:'auto',
   marginRight:'auto'
   
@@ -56,7 +54,7 @@ styles.nav = {
   textAlign: 'center',
   height: '60px',
   display: 'flex',
-  top: '80px',
+  top: '100px',
   bottom: '20px',
   justifyContent: 'center',
 };
