@@ -2,17 +2,33 @@ import React, { useState, useEffect } from "react";
 // import './App.css';
 import Api from "../Api";
 import Button from '@material-ui/core/Button';
+import {
+  auth,  writeAccount, writeOrder,readPrice, readOrder,readPayment
+} from '../firebase.util';
 const api = new Api();
+
+
 
 function SendMoney() { // name, ordermoney, bankName, bankAccountNo, time, place 필요
   let name = "강원석";
-  let ordermoney = 1000;
+  let ordermoney = null;
   let apiKey = "a37e455adcda4fc28c4dfa6e03ebde40";
   let bankName = "농협";
   let bankAccountNo = "3020923287081";
 
   let time = "9:00";
   let place = "긱취";
+  const loginCheck = () => {
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        ordermoney=readPrice(auth.currentUser.uid);
+        // console.log('log in with', user.email);
+      } 
+      console.log(auth.currentUser);
+      // return (validation);
+      // setValidation(false);
+    });
+  };
 
   const user = {
     name, 
@@ -45,6 +61,7 @@ function SendMoney() { // name, ordermoney, bankName, bankAccountNo, time, place
 
   return (
     <div className="App">
+      <Button onClick={() => { readPrice(auth.currentUser.uid); }}>가격 불러오기</Button>
       <form>
         {send ?
         (
@@ -73,7 +90,7 @@ function SendMoney() { // name, ordermoney, bankName, bankAccountNo, time, place
 
             <div style={{ border: "1px solid black", height: "100px" }}>
               <h3>메뉴 선택으로 돌아가기</h3>
-              <Button variant="contained" color = "primary" onClick = {null}> 돌아가기 </Button>
+              <Button variant="contained" color = "primary" href="/home"> 돌아가기 </Button>
             </div>
           </div>
          )}
