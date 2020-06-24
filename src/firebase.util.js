@@ -112,7 +112,7 @@ export function readOrder() {
     .then((snapshot) => {
       // row.push(snapshot.val());
       console.log(snapshot.val());
-      return snapshot.val().price;
+      return snapshot.val();
     });
 }
 

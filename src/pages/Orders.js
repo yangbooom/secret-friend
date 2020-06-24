@@ -6,9 +6,10 @@ import {
 
 
 const Orders = () => {
-
+  const a = readOrder();
+  
   return(
-     <Button onClick={() => { readOrder(); }}>결제정보 얻기</Button>
+     <Button onClick={() => {console.log(a) }}>결제정보 얻기</Button>
   )
 
 };
