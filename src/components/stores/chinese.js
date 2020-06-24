@@ -95,7 +95,7 @@ handleDecrease = (e) => {
         const {zazang, zambong, friedrice, totalCost, pickedTime} =this.state;
 
         const makeOrder = () => {
-          writeOrder('Nox9260J7pZaZY2IpVu7OKIKigB2', 'chinese', pickedTime, totalCost)
+          writeOrder(auth.currentUser.uid, 'chinese', pickedTime, totalCost)
         }
 
         return (

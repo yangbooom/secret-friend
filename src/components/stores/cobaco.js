@@ -96,7 +96,7 @@ handleDecrease = (e) => {
         const {ross, fish, shrimp,totalCost, pickedTime} =this.state;
 
         const makeOrder = () => {
-          writeOrder('Nox9260J7pZaZY2IpVu7OKIKigB2', 'cobaco', pickedTime, totalCost)
+          writeOrder(auth.currentUser.uid, 'cobaco', pickedTime, totalCost)
         }
 
         return (

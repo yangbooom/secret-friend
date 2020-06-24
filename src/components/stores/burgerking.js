@@ -98,9 +98,9 @@ class BurgerKingMenu extends Component {
         const {mushroom, tongshrimp, steak, totalCost, pickedTime} =this.state;
 
         const makeOrder = () => {
-          writeOrder('Nox9260J7pZaZY2IpVu7OKIKigB2', 'burgerking', pickedTime, totalCost)
-          const {a,b}= toss(totalCost)
-          console.log(a,b)
+          writeOrder(auth.currentUser.uid, 'burgerking', pickedTime, totalCost)
+          console.log(toss(totalCost))
+          // console.log(a,b)
         }
 
         return (
