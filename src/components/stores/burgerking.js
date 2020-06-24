@@ -4,6 +4,7 @@ import {
   auth, writeOrder
 } from '../../firebase.util';
 // import Select from 'react-select'
+import toss from '../../Api.js'
 
 class BurgerKingMenu extends Component {
     state = {
@@ -105,6 +106,8 @@ class BurgerKingMenu extends Component {
 
         const makeOrder = () => {
           writeOrder('Nox9260J7pZaZY2IpVu7OKIKigB2', 'burgerking', pickedTime, totalCost)
+          const {a,b}= toss(totalCost)
+          console.log(a,b)
         }
 
         return (
@@ -144,7 +147,7 @@ class BurgerKingMenu extends Component {
                 <h4>총합: {this.state.totalCost}원</h4>
                 <h5>총 주문량: {this.state.orderQuantity}개</h5>
                 <Button variant="outlined" 
-                          onClick={makeOrder}>
+                          onClick={makeOrder} >
                           주문하기
                 </Button>
             </div>

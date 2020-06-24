@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 // import './App.css';
-import Api from "../Api";
+import toss from "../Api";
 import Button from '@material-ui/core/Button';
 import {
   auth,  writeAccount, writeOrder,readPrice, readOrder,readPayment
 } from '../firebase.util';
-const api = new Api();
+// const api = toss();
 
 
 
@@ -47,17 +47,17 @@ function SendMoney() { // name, ordermoney, bankName, bankAccountNo, time, place
     setSend(true);
   };
 
-  useEffect(() => {
-    pay(user);
-  });
+  // useEffect(() => {
+  //   pay(user);
+  // });
 
-  const pay = (user) => {
-    api.toss(user).then(res => {
-      var Jsonres = JSON.parse(res);
-      setLink(Jsonres.success.link);
-      setScheme(Jsonres.success.scheme);
-    });
-  };
+  // const pay = (user) => {
+  //   api.toss(user).then(res => {
+  //     var Jsonres = JSON.parse(res);
+  //     setLink(Jsonres.success.link);
+  //     setScheme(Jsonres.success.scheme);
+  //   });
+  // };
 
   return (
     <div className="App">
