@@ -18,6 +18,7 @@ export const auth = firebase.auth();
 // export const signInWithGoogle = () => auth.signInWithPopup(googleProvider);
 
 
+
 const uiConfig = {
   signInSuccessUrl: 'home',
   signInFlow: 'popup',
