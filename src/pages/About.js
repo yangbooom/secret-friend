@@ -1,38 +1,18 @@
-/* 
-import React, {useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from '@material-ui/core';
 import {
-  auth, writeAccount, writeOrder,
+  auth, writeAccount, writeOrder,readAccount, readOrder,readPayment
 } from '../firebase.util';
-
-  const [validation, setValidation] = useState(null);
-  const user = auth.currentUser;
-  const loginCheck = () => {
-    auth.onAuthStateChanged((user) => {
-      if (user) {
-        setValidation(true);
-        // console.log('log in with', user.email);
-      } else {
-        setValidation(false);
-      }
-    });
-  };
 
 const About = () => (
   <div>
     <h2>About</h2>
-       <div>
-      <h2>
-        홈
-      </h2>
-      <Button onClick={() => { writeAccount(auth.currentUser.uid, '홍길동', 12345677, '국민은행'); }}>계좌설정하기</Button>
-      <Button onClick={() => { writeOrder(auth.currentUser.uid, '네네치킨', '양념순살','202006262300', 2); }}>주문하기</Button>
-      
-{/* userID, brand, menu, time, foodNumber }
-    </div>
+    <Button onClick={() => { writeAccount(auth.currentUser.uid, '홍길동', 12345677, '국민은행'); }}>계좌설정하기</Button>
+    <Button onClick={() => { writeOrder(auth.currentUser.uid, 'chicken', '영범','202006262300', 2); }}>주문하기</Button>
+    <Button onClick={() => { readAccount(auth.currentUser.uid); }}>계좌 불러오기</Button>
+    <Button onClick={() => { readOrder('ratinol','202006262300'); }}>주문 불러오기</Button>
+    <Button onClick={() => { readPayment('ratinol','202006262300'); }}>결제정보 얻기</Button>
   </div>
 );
 
 export default About;
-
-*/
