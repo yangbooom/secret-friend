@@ -5,7 +5,11 @@ import {
 } from '../../firebase.util';
 
 class RatinolMenu extends Component {
+<<<<<<< Updated upstream
 
+=======
+    
+>>>>>>> Stashed changes
     time = "202006262330"
 
     state = {
