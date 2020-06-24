@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 // import './App.css';
-import Api from "./Api";
+import Api from "../Api";
 const api = new Api();
 
 function SendMoney() {
