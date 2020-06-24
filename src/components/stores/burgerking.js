@@ -90,10 +90,10 @@ class BurgerKingMenu extends Component {
 }
 
 
-  handleChange = (options) => {
+  handleChange = (e) => {
     this.setState(
       { 
-        pickedTime: this.options.value
+        pickedTime: e.target.value
       }
     );  
   }
@@ -120,8 +120,14 @@ class BurgerKingMenu extends Component {
 
         return (
           <div>
-            <div>        
-              <Select value={pickedTime} options={this.options} onChange={this.handleChange}/>
+            <div> 
+             <select value={pickedTime} onChange={this.handleChange}>
+                <option value='21:00'>21:00</option>
+                <option value='22:00'>22:00</option>
+                <option value='23:00'>23:00</option>
+                <option value='24:00'>24:00</option>
+              </select>       
+           
             </div>
             <div style={{textAlign:"center", marginTop:"50px"}}>
               
