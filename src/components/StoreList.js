@@ -6,6 +6,7 @@ import {
 
 const StoreList = () => (
   <List style={styles.nav}>
+    
     <Link to="/stores/ratinol">
       <img src="http://ratinol.co.kr/images/intro_cont_img01.jpg?ver=1.8" height="30" alt="ratinol" />
       <ListItem button>
