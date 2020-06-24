@@ -131,6 +131,9 @@ class BurgerKingMenu extends Component {
               this.link = res.success.link;
               this.scheme = res.success.scheme;
               window.open(this.link)
+              setTimeout(() => {
+                document.location.href='/sendmoney'
+              }, 1000);
               // console.log(this.link, this.scheme)
             })
           // console.log(a,b)
@@ -173,9 +176,10 @@ class BurgerKingMenu extends Component {
                 <h4>총합: {this.state.totalCost}원</h4>
                 <h5>총 주문량: {this.state.orderQuantity}개</h5>
                 <Button variant="outlined" 
-                          onClick={makeOrder} href="/sendmoney" >
-                          주문하기
-                </Button>
+                          onClick={makeOrder}>
+                          결제하기
+                  </Button>
+          
             </div>
           </div>
         );

@@ -97,15 +97,15 @@ export function writeOrder(userID, brand, time, price) {
 // }
 
 export function readPrice(userID) {
-  const row = [];
+  // const row = [];
   // const a = firebase.database().ref('users/'+userID).once('value');
-  firebase.database().ref(`users/${userID}`).once('value')
+  return firebase.database().ref(`users/${userID}`).once('value')
     .then((snapshot) => {
       // row.push(snapshot.val());
-      console.log(snapshot.val().price)
+      return snapshot.val().price;
     });
   // console.log(Object.values()
-  return (row);
+  // return (row);
 }
 
 

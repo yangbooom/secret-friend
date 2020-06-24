@@ -128,6 +128,9 @@ handleDecrease = (e) => {
               this.link = res.success.link;
               this.scheme = res.success.scheme;
               window.open(this.link);
+              setTimeout(() => {
+                document.location.href='/sendmoney'
+              }, 1000);
               // console.log(this.link, this.scheme)
             })
         }
@@ -169,9 +172,10 @@ handleDecrease = (e) => {
                 <h5>총 주문량: {this.state.orderQuantity}개</h5>
                 <div>
                  <Button variant="outlined" 
-                          onClick={makeOrder} href="/sendmoney" >
-                          주문하기
-                </Button>
+                          onClick={makeOrder} >
+                          결제하기
+                  </Button>
+     
                 </div>
             </div>
           </div>
