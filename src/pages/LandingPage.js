@@ -1,8 +1,8 @@
 /* eslint-disable react/jsx-filename-extension */
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { Button } from '@material-ui/core';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { ReactComponent as LandingImage } from '../img/landing_image.svg';
 import { ReactComponent as Logo } from '../img/logo.svg';
 

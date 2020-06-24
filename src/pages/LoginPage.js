@@ -16,6 +16,7 @@ function LoginPage() {
     auth.onAuthStateChanged((user) => {
       if (user) {
         setValidation(true);
+        document.location.href='/home'
         // console.log('log in with', user.email);
       } else {
         setValidation(false);
@@ -27,11 +28,11 @@ function LoginPage() {
   };
 
   useEffect(() => {
-    // loginCheck();
+    loginCheck();
   }, [validation]);
 
   return (
-    <div  style={{
+    <div style={{
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'space-around',
