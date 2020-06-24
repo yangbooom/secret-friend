@@ -108,12 +108,16 @@ export function readPrice(userID) {
 }
 
 export function readOrder() {
+  const orders = [];
   return firebase.database().ref('users').once('value')
     .then((snapshot) => {
       // row.push(snapshot.val());
       // console.log(snapshot.val(),111);
-      snapshot.val();
-    });
+      snapshot.forEach((user)=> {
+        orders.push([user.val().ID, user.val().price, user.val().brand])
+      })
+    })
+    .then(()=> orders);
 }
 
 // export async function readOrder(brand, time) {
