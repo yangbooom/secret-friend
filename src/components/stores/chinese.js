@@ -27,7 +27,7 @@ class ChineseMenu extends Component {
         bankName: '카카오뱅크',
         bankAccountNo: '3333070047832',
         amount: `${amount}`,
-        message: '비밀친구만나기',
+        message: '중국비밀친구만남요청',
       }),
       redirect: 'follow',
     }).then((res) => res.json());
