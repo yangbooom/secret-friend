@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import {Button} from '@material-ui/core';
 import {
   auth, writeOrder
 } from '../../firebase.util';
 
 class ChineseMenu extends Component {
+
     state = {
         zazang: 0,
         zambong: 0,
@@ -83,44 +85,55 @@ handleDecrease = (e) => {
 
     render() {
         const {zazang, zambong, friedrice} =this.state;
+        const time="202006262330";
 
         const makeZazangOrder = () => {
-          writeOrder('Nox9260J7pZaZY2IpVu7OKIKigB2', 'chinese', '짜장면', this.time, zazang)
+          writeOrder('Nox9260J7pZaZY2IpVu7OKIKigB2', 'chinese', '짜장면', time, zazang)
         }
       
         const makeZambongOrder = () => {
-          writeOrder('Nox9260J7pZaZY2IpVu7OKIKigB2', 'chinese', '짬뽕', this.time, zambong)
+          writeOrder('Nox9260J7pZaZY2IpVu7OKIKigB2', 'chinese', '짬뽕',time, zambong)
         }
       
         const makeFriedRiceOrder = () => {
-          writeOrder('Nox9260J7pZaZY2IpVu7OKIKigB2', 'chinese', '볶음밥', this.time, friedrice)
+          writeOrder('Nox9260J7pZaZY2IpVu7OKIKigB2', 'chinese', '볶음밥', time, friedrice)
         }
 
         return (
             <div style={{textAlign:"center"}}>
                 <h3>먹고 싶은 중국집 메뉴를 선택하세요</h3>
                 <ul>
-                    <div>
+                    <div style={styles.menu}>
                         짜장면 5500원 {' '}
                         <span>{zazang}개</span>{' '}
                         <button onClick={this.handleIncrease} name="zazang"> + </button>
                         <button onClick={this.handleDecrease} name="zazang"> - </button>
                     </div>
-                    <div>
+                    <div style={styles.menu}>
                         짬뽕 6500원{' '}
                         <span>{zambong}개</span>{' '}
                         <button onClick={this.handleIncrease} name="zambong"> + </button>
                         <button onClick={this.handleDecrease} name="zambong"> - </button>
                     </div>
-                    <div>
+                    <div style={styles.menu}>
                         볶음밥 7000원{' '}
                         <span>{friedrice}개</span>{' '}
                         <button onClick={this.handleIncrease} name="friedrice"> + </button>
                         <button onClick={this.handleDecrease} name="friedrice"> - </button>
                     </div>
                 </ul>
-        <h4>총합: {this.state.totalCost}원</h4>
-        <h5>총 주문량: {this.state.orderQuantity}개</h5>
+                <h4>총합: {this.state.totalCost}원</h4>
+                <h5>총 주문량: {this.state.orderQuantity}개</h5>
+                <div>
+                  <Button variant="outlined" 
+                          onClick={() => {
+                                    makeZazangOrder();
+                                    makeZambongOrder();
+                                    makeFriedRiceOrder();
+                                    }}>
+                          주문하기
+                  </Button>
+                </div>
             </div>
         );
     }

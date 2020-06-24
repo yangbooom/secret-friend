@@ -101,19 +101,19 @@ class BurgerKingMenu extends Component {
             <div style={{textAlign:"center"}}>
                 <h3>먹고 싶은 버거킹 메뉴를 선택하세요</h3>
                 <ul>
-                    <div>
+                    <div style={styles.menu}>
                         트러플머쉬룸 와퍼세트 8300원{' '}
                         <span>{mushroom}개</span>{' '}
-                        <button onCdivck={this.handleIncrease} name="mushroom"> + </button>
+                        <button onClick={this.handleIncrease} name="mushroom"> + </button>
                         <button onClick={this.handleDecrease} name="mushroom"> - </button>
                     </div>
-                    <div>
+                    <div style={styles.menu}>
                         통새우와퍼세트 8900원{' '}
                         <span>{tongshrimp}개</span>{' '}
                         <button onClick={this.handleIncrease} name="tongshrimp"> + </button>
                         <button onClick={this.handleDecrease} name="tongshrimp"> - </button>
                     </div>
-                    <div>
+                    <div style={styles.menu}>
                         트러플머쉬룸 스테이크버거세트 9300원{' '}
                         <span>{steak}개</span>{' '}
                         <button onClick={this.handleIncrease} name="steak"> + </button>

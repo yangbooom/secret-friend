@@ -1,5 +1,6 @@
 
 import React, { Component } from 'react';
+import {Button} from '@material-ui/core';
 import {
   auth, writeOrder
 } from '../../firebase.util';
@@ -101,27 +102,37 @@ handleDecrease = (e) => {
             <div style={{textAlign:"center"}}>
                 <h3>먹고 싶은 돈까스 메뉴를 선택하세요</h3>
                 <ul>
-                    <div>
+                    <div style={styles.menu}>
                         로스가스 8000원{' '}
                         <span>{ross}개</span>{' '}
                         <button onClick={this.handleIncrease} name="ross"> + </button>
                         <button onClick={this.handleDecrease} name="ross"> - </button>
                     </div>
-                    <div>
+                    <div style={styles.menu}>
                         생선가스 8500원{' '}
                         <span>{fish}개</span>{' '}
                         <button onClick={this.handleIncrease} name="fish"> + </button>
                         <button onClick={this.handleDecrease} name="fish"> - </button>
                     </div>
-                    <div>
+                    <div style={styles.menu}>
                         새우돈가스 6000원{' '}
                         <span>{shrimp}개</span>{' '}
                         <button onClick={this.handleIncrease} name="shrimp"> + </button>
                         <button onClick={this.handleDecrease} name="shrimp"> - </button>
                     </div>
                 </ul>
-        <h4>총합: {this.state.totalCost}원</h4>
-        <h5>총 주문량: {this.state.orderQuantity}개</h5>
+                <h4>총합: {this.state.totalCost}원</h4>
+                <h5>총 주문량: {this.state.orderQuantity}개</h5>
+                <div>
+                  <Button variant="outlined" 
+                          onClick={() => {
+                                    makeRossOrder();
+                                    makeFishOrder();
+                                    makeShrimpOrder();
+                                    }}>
+                          주문하기
+                  </Button>
+                  </div>
             </div>
         );
     }
