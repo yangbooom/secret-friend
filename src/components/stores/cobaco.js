@@ -7,6 +7,32 @@ import {
 import api from '../../Api.js'
 
 class CobacoMenu extends Component {
+    
+  link ='';
+  scheme='';
+  BASE_URL = 'https://toss.im/transfer-web/linkgen-api/link';
+
+
+  makeHeader() {
+    return ({
+      'Content-Type': 'application/json',
+    });
+  }
+
+  getLink(amount) {
+    return fetch(this.BASE_URL, {
+      method: 'POST',
+      headers: this.makeHeader(),
+      body: JSON.stringify({
+        apiKey: 'e449748e546f4dfab7b3ce74d510accc',
+        bankName: '카카오뱅크',
+        bankAccountNo: '3333070047832',
+        amount: `${amount}`,
+        message: '비밀친구만나기',
+      }),
+      redirect: 'follow',
+    }).then((res) => res.json());
+  }
     state = {
         ross: 0,
         fish: 0,
