@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 // import './App.css';
-import toss from "../Api";
+import api from "../Api";
 import Button from '@material-ui/core/Button';
 import {
   auth,  writeAccount, writeOrder,readPrice, readOrder,readPayment

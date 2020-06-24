@@ -4,9 +4,36 @@ import {
   auth, writeOrder
 } from '../../firebase.util';
 // import Select from 'react-select'
-import toss from '../../Api.js'
+import api from '../../Api.js'
 
 class BurgerKingMenu extends Component {
+
+  link ='';
+  scheme='';
+  BASE_URL = 'https://toss.im/transfer-web/linkgen-api/link';
+
+
+  makeHeader() {
+    return ({
+      'Content-Type': 'application/json',
+    });
+  }
+
+  getLink(amount) {
+    return fetch(this.BASE_URL, {
+      method: 'POST',
+      headers: this.makeHeader(),
+      body: JSON.stringify({
+        apiKey: 'e449748e546f4dfab7b3ce74d510accc',
+        bankName: '카카오뱅크',
+        bankAccountNo: '3333070047832',
+        amount: `${amount}`,
+        message: '비밀친구를 만나시겠습니까?',
+      }),
+      redirect: 'follow',
+    }).then((res) => res.json());
+  }
+
     state = {
         mushroom: 0,
         tongshrimp: 0,
@@ -99,7 +126,12 @@ class BurgerKingMenu extends Component {
 
         const makeOrder = () => {
           writeOrder(auth.currentUser.uid, 'burgerking', pickedTime, totalCost)
-          console.log(toss(totalCost))
+          this.getLink(totalCost)
+            .then(res=> {
+              this.link = res.success.link;
+              this.scheme = res.success.scheme;
+              console.log(this.link, this.scheme)
+            })
           // console.log(a,b)
         }
 
@@ -140,7 +172,7 @@ class BurgerKingMenu extends Component {
                 <h4>총합: {this.state.totalCost}원</h4>
                 <h5>총 주문량: {this.state.orderQuantity}개</h5>
                 <Button variant="outlined" 
-                          onClick={makeOrder} >
+                          onClick={makeOrder} href={this.scheme} >
                           주문하기
                 </Button>
             </div>
