@@ -75,7 +75,7 @@ export function writeAccount(userID, name, accountNumber, bankName) {
 }
 
 export function writeOrder(userID, brand, time, price) {
-  firebase.database().ref(`orders/${brand}${time}/${userID}`).push({
+  firebase.database().ref(`users/${userID}`).set({
     ID: userID,
     // menu,
     brand,
@@ -84,6 +84,17 @@ export function writeOrder(userID, brand, time, price) {
     price,
   });
 }
+
+// export function writeOrder(userID, brand, time, price) {
+//   firebase.database().ref(`orders/${brand}${time}/${userID}`).push({
+//     ID: userID,
+//     // menu,
+//     brand,
+//     time,
+//     // foodNumber,
+//     price,
+//   });
+// }
 
 export function readAccount(userID) {
   const row = [];
@@ -96,22 +107,30 @@ export function readAccount(userID) {
   return (row);
 }
 
-export function readOrder(brand, time) {
-  const orders = [];
-  firebase.database().ref(`orders/${brand}${time}`).once('value')
-    .then((snapshot) => {
-      // console.log(snapshot.val())
-      snapshot.forEach(element => {
-        orders.push(element.val())
-      });
-    });
-  console.log(orders)
-  return (orders);
-}
+// export async function readOrder(brand, time) {
+//   let orders = [];
+//   firebase.database().ref(`orders/${brand}${time}`).once('value')
+//     .then((snapshot) => snapshot.val())
+//     .then((res) => Object.values(res))
+//     .then((res) => {
+//       orders = res;}
+//       );
+//     //   snapshot.forEach((child) => {
+//     //     orders= (Object.values(child.val()));
+//     //     console.log(Object.values(child.val()))
+//     //   });
+//     // });
+//   console.log(orders,11);
+//   return (orders);
+// }
 
 export function readPayment(brand, time, userID) {
-  const order = readOrder(brand, time);
-  console.log(order)
+  const orders = readOrder(brand, time);
+  // console.log('orders', orders)
+  orders.forEach((order) => {
+    console.log('1')
+  });
+  // const {ID, brand_, time_, price} = orders;
 }
 
 export default firebase;
