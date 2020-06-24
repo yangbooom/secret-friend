@@ -34,6 +34,7 @@ class RatinolMenu extends Component {
   }
 
 
+
     state = {
         ddeok: 0,
         kimbab: 0,
