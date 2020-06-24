@@ -85,17 +85,18 @@ handleDecrease = (e) => {
 
     render() {
         const {ross, fish, shrimp} =this.state;
+        const time="202006262400"
 
         const makeRossOrder = () => {
-          writeOrder('Nox9260J7pZaZY2IpVu7OKIKigB2', 'cobaco', '로스가스', this.time, ross)
+          writeOrder('Nox9260J7pZaZY2IpVu7OKIKigB2', 'cobaco', '로스가스', time, ross)
         }
       
         const makeFishOrder = () => {
-          writeOrder('Nox9260J7pZaZY2IpVu7OKIKigB2', 'cobaco', '생선가스', this.time, fish)
+          writeOrder('Nox9260J7pZaZY2IpVu7OKIKigB2', 'cobaco', '생선가스', time, fish)
         }
       
         const makeShrimpOrder = () => {
-          writeOrder('Nox9260J7pZaZY2IpVu7OKIKigB2', 'cobaco', '새우돈가스', this.time, shrimp)
+          writeOrder('Nox9260J7pZaZY2IpVu7OKIKigB2', 'cobaco', '새우돈가스', time, shrimp)
         }
 
         return (

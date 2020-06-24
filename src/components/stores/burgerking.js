@@ -84,17 +84,18 @@ class BurgerKingMenu extends Component {
 
     render() {
         const {mushroom, tongshrimp, steak} =this.state;
+        const time="202006262400"
 
         const makeMushroomOrder = () => {
-          writeOrder('Nox9260J7pZaZY2IpVu7OKIKigB2', 'burgerking', '트러플머쉬룸 와퍼세트', this.time, mushroom)
+          writeOrder('Nox9260J7pZaZY2IpVu7OKIKigB2', 'burgerking', '트러플머쉬룸 와퍼세트', time, mushroom)
         }
       
         const makeTongShrimpOrder = () => {
-          writeOrder('Nox9260J7pZaZY2IpVu7OKIKigB2', 'burgerking', '통새우와퍼세트', this.time, tongshrimp)
+          writeOrder('Nox9260J7pZaZY2IpVu7OKIKigB2', 'burgerking', '통새우와퍼세트', time, tongshrimp)
         }
       
         const makeSteakOrder = () => {
-          writeOrder('Nox9260J7pZaZY2IpVu7OKIKigB2', 'burgerking', '트러플머쉬룸 스테이크버거세트', this.time, steak)
+          writeOrder('Nox9260J7pZaZY2IpVu7OKIKigB2', 'burgerking', '트러플머쉬룸 스테이크버거세트', time, steak)
         }
 
         return (
