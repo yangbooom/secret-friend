@@ -1,9 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import './App.css';
 import {List, ListItem, ListItemText, Divider, Typography} from '@material-ui/core'
 
-const Store = () => {
+const StoreList = () => {
   return (  
     <List style={styles.nav}>
         <Link to="/stores/ratinol">
@@ -51,4 +50,4 @@ styles.nav = {
   borderBottom: "1px solid #efefef"
 };
 
-export default Store
+export default StoreList
