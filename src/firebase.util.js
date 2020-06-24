@@ -65,5 +65,25 @@ export function writeUserData(userID, name) {
   });
 }
 
+export function writeAccount(userID, name, accountNumber, bankName) {
+  firebase.database().ref('users/'+userID).set({
+    ID: userID,
+    'name': name,
+    'accountNumber': accountNumber,
+    'bankName': bankName,
+  });
+}
+
+export function writeOrder(userID, brand, menu, time, foodNumber){
+  firebase.database().ref('orders/'+brand+time+'/'+userID).push({
+    ID: userID,
+    'menu': menu,
+    'brand': brand,
+    'time': time,
+    'foodNumber': foodNumber,
+  })
+}
+
+
 export default firebase;
 // 혹시 전체 라이브러리가 필요할지도 모르기 때문에 firebase도 export 해준다.
