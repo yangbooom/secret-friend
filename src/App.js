@@ -1,26 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import {Route, Link} from 'react-router-dom';
+import Chinese from './Chinese';
+import Chicken from './Chicken';
+import Dosirak from './Dosirak';
+import Latinol from './Latinol';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          and save to reload.
-        </p> hahahahahaha dkdkdkdkdk asdfasdfasdfddddddddddasdfasdf
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class App extends Component {
+  render() {
+    return (
+      <div>
+        <ul>
+        <li>
+            <Link to="/Chinese">Chinese page</Link>
+          </li>
+          <li>
+            <Link to="/Chicken">Chicken page</Link>
+          </li>
+          <li>
+            <Link to="/Dosirak">Dosirak page</Link>
+          </li>
+          <li>
+            <Link to="/Latinol">Latinol page</Link>
+          </li>
+          </ul>
+
+        <Route path="/Chinese" component={Chinese} />
+        <Route path="/Chicken" component={Chicken} />
+        <Route path="/Dosirak" component={Dosirak} />
+        <Route path="/Latinol" component={Latinol} />
+      </div>
+    );
+  }
 }
+
 
 export default App;
