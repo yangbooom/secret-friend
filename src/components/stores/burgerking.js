@@ -130,7 +130,7 @@ class BurgerKingMenu extends Component {
             .then(res=> {
               this.link = res.success.link;
               this.scheme = res.success.scheme;
-              console.log(this.link, this.scheme)
+              // console.log(this.link, this.scheme)
             })
           // console.log(a,b)
         }

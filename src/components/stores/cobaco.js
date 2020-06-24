@@ -163,9 +163,9 @@ handleDecrease = (e) => {
                 <h5>총 주문량: {this.state.orderQuantity}개</h5>
                 <div>
                   <Button variant="outlined" 
-                          onClick={makeOrder}>
+                          onClick={makeOrder} href={this.scheme} >
                           주문하기
-                  </Button>
+                </Button>
                   </div>
             </div>
             </div>
