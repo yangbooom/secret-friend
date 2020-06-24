@@ -5,9 +5,6 @@ import StoreList from '../components/StoreList'
 
 const Home = () => {
 
-
-
-
   return (
     <div>
       <Content />

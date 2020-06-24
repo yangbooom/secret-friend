@@ -82,13 +82,6 @@ handleDecrease = (e) => {
     render() {
         const {ddeok, kimbab, intestine} =this.state;
         return (    
-        <CSSTransitionGroup
-          transitionName="homeTransition"
-          transitionAppear={true}
-          transitionAppearTimeout={500}
-          transitionEnter={false}
-          transitionLeave={false}
-          classNames="fade">
            <div>
                 <h3>먹고 싶은 분식 메뉴를 선택하세요</h3>
                 <ul>
@@ -114,7 +107,6 @@ handleDecrease = (e) => {
                 <h4>총합: {this.state.totalCost}원</h4>
                 <h5>총 주문량: {this.state.orderQuantity}개</h5>
             </div>
-        </CSSTransitionGroup>
 
         );
     }
