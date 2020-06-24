@@ -4,7 +4,7 @@ import {
   auth, writeOrder
 } from '../../firebase.util';
 // import Select from 'react-select'
-import api from '../../Api.js'
+// import api from '../../Api.js'
 
 class BurgerKingMenu extends Component {
 
@@ -130,6 +130,7 @@ class BurgerKingMenu extends Component {
             .then(res=> {
               this.link = res.success.link;
               this.scheme = res.success.scheme;
+              window.open(this.link)
               // console.log(this.link, this.scheme)
             })
           // console.log(a,b)
@@ -172,7 +173,7 @@ class BurgerKingMenu extends Component {
                 <h4>총합: {this.state.totalCost}원</h4>
                 <h5>총 주문량: {this.state.orderQuantity}개</h5>
                 <Button variant="outlined" 
-                          onClick={makeOrder} href={this.scheme} >
+                          onClick={makeOrder} href="/sendmoney" >
                           주문하기
                 </Button>
             </div>

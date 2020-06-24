@@ -3,7 +3,7 @@ import {Button, Select} from '@material-ui/core';
 import {
   auth, writeOrder
 } from '../../firebase.util';
-import api from '../../Api.js'
+// import api from '../../Api.js'
 
 class RatinolMenu extends Component {
   
@@ -42,6 +42,7 @@ class RatinolMenu extends Component {
         orderQuantity: 0,
         totalCost: 0,
         pickedTime: null
+        
     }
 
     
@@ -133,8 +134,11 @@ handleDecrease = (e) => {
             .then(res=> {
               this.link = res.success.link;
               this.scheme = res.success.scheme;
+              window.open(this.link);
               // console.log(this.link, this.scheme)
             })
+
+          
         }
 
         return (    
@@ -180,9 +184,9 @@ handleDecrease = (e) => {
                 <h5>총 주문량: {this.state.orderQuantity}개</h5>
                 <div>
                   <Button variant="outlined" 
-                          onClick={makeOrder} href={this.scheme} >
+                          onClick={makeOrder} href="/sendmoney" >
                           주문하기
-                </Button>
+                  </Button>
                   </div>
             </div>
           </div>
