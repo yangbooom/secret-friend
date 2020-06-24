@@ -124,6 +124,12 @@ handleDecrease = (e) => {
 
         const makeOrder = () => {
           writeOrder(auth.currentUser.uid, 'cobaco', pickedTime, totalCost)
+          this.getLink(totalCost)
+            .then(res=> {
+              this.link = res.success.link;
+              this.scheme = res.success.scheme;
+              // console.log(this.link, this.scheme)
+            })
         }
 
         return (
