@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Button} from '@material-ui/core';
+import {Button, Select} from '@material-ui/core';
 import {
   auth, writeOrder
 } from '../../firebase.util';
@@ -101,15 +101,15 @@ handleDecrease = (e) => {
         return (
           <div>
             <h3 style={{textAlign:'center'}}>시간을 선택하세요</h3>
-            <div style={{display:'flex', justifyContent:'center', marginLeft:'auto', marginRight:'auto'}}> 
-            <select value={pickedTime} onChange={this.handleChange}>
+            <div style={{display:'flex', justifyContent:'center'}}> 
+            <Select native value={pickedTime} onChange={this.handleChange}>
                 <option value='21:00'>21:00</option>
                 <option value='22:00'>22:00</option>
                 <option value='23:00'>23:00</option>
                 <option value='24:00'>24:00</option>
-              </select>       
+              </Select>       
             </div>
-            <div style={{textAlign:"center", marginTop:"50px"}}>
+            <div style={{textAlign:"center", marginTop:"30px"}}>
                 <h3>먹고 싶은 중국집 메뉴를 선택하세요</h3>
                 <ul>
                     <div style={styles.menu}>
