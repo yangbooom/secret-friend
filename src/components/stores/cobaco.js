@@ -1,29 +1,137 @@
-import React from 'react';
-import { CSSTransitionGroup } from 'react-transition-group';
-import { Paper } from '@material-ui/core';
 
-const CobacoMenu = () => (
-  <CSSTransitionGroup
-    transitionName="homeTransition"
-    transitionAppear
-    transitionAppearTimeout={500}
-    transitionEnter={false}
-    transitionLeave={false}
-    classNames="fade"
-  >
-    <Paper style={styles.menu}>Cobaco Menu</Paper>
-  </CSSTransitionGroup>
-);
+import React, { Component } from 'react';
+import {
+  auth, writeOrder
+} from '../../firebase.util';
+
+class CobacoMenu extends Component {
+    state = {
+        ross: 0,
+        fish: 0,
+        shrimp: 0,
+        orderQuantity: 0,
+        totalCost: 0,
+    }
+
+    handleIncrease = (e) => {
+        const {name} = e.target;
+        if(name === "ross") {
+            this.setState({
+                [name] : this.state.ross + 1,
+                totalCost: this.state.totalCost + 8000,
+            })
+        } else if(name === "fish") {
+            this.setState ({
+                [name] : this.state.fish + 1,
+                totalCost: this.state.totalCost + 8500
+            })
+        }else if(name === "shrimp") {
+            this.setState ({
+                [name] : this.state.shrimp + 1,
+                totalCost: this.state.totalCost + 8500
+        })
+    }
+
+    this.setState({
+        orderQuantity: this.state.orderQuantity + 1
+    })
+}
+    
+handleDecrease = (e) => {
+    const {ross, fish, shrimp, orderQuantity} = this.state;
+
+    if(orderQuantity == 0){
+        alert("cannot decrease your quantity!");
+        return ;
+    }
+
+    const {name} = e.target;
+    if(name === "ross") {
+        if(ross == 0){
+            alert("cannot decrease your quantity!");
+        return ;
+        }
+        this.setState({
+            [name]: this.state.ross - 1,
+            totalCost: this.state.totalCost - 8000
+        })
+    }else if(name === "fish") {
+        if(fish == 0){
+            alert("cannot decrease your quantity!");
+        return ;
+        }
+        this.setState({
+            [name]: this.state.fish - 1,
+            totalCost: this.state.totalCost - 8500
+        })
+    }else if(name === "shrimp") {
+        if(shrimp == 0){
+            alert("cannot decrease your quantity!");
+            return ;
+        }
+        this.setState({
+            [name]: this.state.shrimp - 1,
+            totalCost: this.state.totalCost - 8500
+        })
+    }
+    this.setState({
+        orderQuantity: this.state.orderQuantity - 1
+    })
+    
+}
+    
+
+
+    render() {
+        const {ross, fish, shrimp} =this.state;
+
+        const makeRossOrder = () => {
+          writeOrder('Nox9260J7pZaZY2IpVu7OKIKigB2', 'cobaco', '로스가스', this.time, ross)
+        }
+      
+        const makeFishOrder = () => {
+          writeOrder('Nox9260J7pZaZY2IpVu7OKIKigB2', 'cobaco', '생선가스', this.time, fish)
+        }
+      
+        const makeShrimpOrder = () => {
+          writeOrder('Nox9260J7pZaZY2IpVu7OKIKigB2', 'cobaco', '새우돈가스', this.time, shrimp)
+        }
+
+        return (
+            <div style={{textAlign:"center"}}>
+                <h3>먹고 싶은 돈까스 메뉴를 선택하세요</h3>
+                <ul>
+                    <div>
+                        로스가스 8000원{' '}
+                        <span>{ross}개</span>{' '}
+                        <button onClick={this.handleIncrease} name="ross"> + </button>
+                        <button onClick={this.handleDecrease} name="ross"> - </button>
+                    </div>
+                    <div>
+                        생선가스 8500원{' '}
+                        <span>{fish}개</span>{' '}
+                        <button onClick={this.handleIncrease} name="fish"> + </button>
+                        <button onClick={this.handleDecrease} name="fish"> - </button>
+                    </div>
+                    <div>
+                        새우돈가스 6000원{' '}
+                        <span>{shrimp}개</span>{' '}
+                        <button onClick={this.handleIncrease} name="shrimp"> + </button>
+                        <button onClick={this.handleDecrease} name="shrimp"> - </button>
+                    </div>
+                </ul>
+        <h4>총합: {this.state.totalCost}원</h4>
+        <h5>총 주문량: {this.state.orderQuantity}개</h5>
+            </div>
+        );
+    }
+}
 
 const styles = {};
 
 styles.menu = {
-  position: 'absolute',
   textAlign: 'center',
-  left: 0,
-  right: 0,
-  top: '120px',
-  bottom: 0,
+  marginTop: '10px'
 };
 
 export default CobacoMenu;

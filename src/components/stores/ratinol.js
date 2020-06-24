@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
-import { CSSTransitionGroup } from 'react-transition-group'
+import {Button, ButtonGroup} from '@material-ui/core';
+import {
+  auth, writeOrder
+} from '../../firebase.util';
 
 class RatinolMenu extends Component {
+
+    time = "202006262330"
 
     state = {
         ddeok: 0,
@@ -30,10 +35,10 @@ class RatinolMenu extends Component {
         })
     }
 
-    this.setState({
-        orderQuantity: this.state.orderQuantity + 1
-    })
-}
+      this.setState({
+          orderQuantity: this.state.orderQuantity + 1
+      })
+    }
     
 handleDecrease = (e) => {
     const {ddeok, kimbab, intestine, orderQuantity} = this.state;
@@ -76,41 +81,80 @@ handleDecrease = (e) => {
         orderQuantity: this.state.orderQuantity - 1
     })
     
-}
-    
+  }
+  
+
+  
 
     render() {
+
         const {ddeok, kimbab, intestine} =this.state;
+
+        const makeDdeokOrder = () => {
+          writeOrder('Nox9260J7pZaZY2IpVu7OKIKigB2', 'ratinol', '떡볶이', this.time, ddeok)
+        }
+      
+        const makeKimbabOrder = () => {
+          writeOrder('Nox9260J7pZaZY2IpVu7OKIKigB2', 'ratinol', '김밥', this.time, kimbab)
+        }
+      
+        const makeIntestineOrder = () => {
+          writeOrder('Nox9260J7pZaZY2IpVu7OKIKigB2', 'ratinol', '순대', this.time, intestine)
+        }
+
         return (    
-           <div>
+           <div style={{textAlign:"center"}}>
                 <h3>먹고 싶은 분식 메뉴를 선택하세요</h3>
                 <ul>
-                    <li>
+                    <div style={styles.menu}>
                         떡볶이 4500원 {' '}
                         <span>{ddeok}개</span>{' '}
-                        <button onClick={this.handleIncrease} name="ddeok"> + </button>
-                        <button onClick={this.handleDecrease} name="ddeok"> - </button>
-                    </li>
-                    <li>
+                        
+                          <button onClick={this.handleIncrease} name="ddeok"> + </button>
+                          <button onClick={this.handleDecrease} name="ddeok"> - </button>
+                        
+
+                    </div>
+                    <div style={styles.menu}>
                         김밥 4000원{' '}
                         <span>{kimbab}개</span>{' '}
-                        <button onClick={this.handleIncrease} name="kimbab"> + </button>
-                        <button onClick={this.handleDecrease} name="kimbab"> - </button>
-                    </li>
-                    <li>
+                          <button onClick={this.handleIncrease} name="kimbab"> + </button>
+                          <button onClick={this.handleDecrease} name="kimbab"> - </button>
+
+                    </div>
+                    <div style={styles.menu}>
                         순대 4500원{' '}
                         <span>{intestine}개</span>{' '}
-                        <button onClick={this.handleIncrease} name="intestine"> + </button>
-                        <button onClick={this.handleDecrease} name="intestine"> - </button>
-                    </li>
+
+                          <button onClick={this.handleIncrease} name="intestine"> + </button>
+                          <button onClick={this.handleDecrease} name="intestine"> - </button>
+
+                    </div>
                 </ul>
                 <h4>총합: {this.state.totalCost}원</h4>
                 <h5>총 주문량: {this.state.orderQuantity}개</h5>
+                <div>
+                  <Button variant="outlined" 
+                          onClick={() => {
+                                    makeDdeokOrder();
+                                    makeIntestineOrder();
+                                    makeKimbabOrder();
+                                    }}>
+                          주문하기
+                  </Button>
+                  </div>
+                
             </div>
 
         );
     }
 }
 
+const styles = {};
+
+styles.menu = {
+  textAlign: 'center',
+  marginTop: '10px'
+};
 
 export default RatinolMenu;
