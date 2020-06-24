@@ -98,17 +98,6 @@ class BurgerKingMenu extends Component {
     );  
   }
 
-  handleClick = () => {
-    if(this.state.pickedTime === null){
-    const {history} = this.props;
-    const unblock = history.block('시간을 먼저 설정해주셔야 합니다');
-    return () => {
-      unblock();
-    };
-  } else {
-    return ;
-  }
-  }
 
 
     render() {
@@ -120,14 +109,14 @@ class BurgerKingMenu extends Component {
 
         return (
           <div>
-            <div> 
+            <h3 style={{textAlign:'center'}}>시간을 선택하세요</h3>
+            <div style={{display:'flex', justifyContent:'center', marginLeft:'auto', marginRight:'auto'}}> 
              <select value={pickedTime} onChange={this.handleChange}>
                 <option value='21:00'>21:00</option>
                 <option value='22:00'>22:00</option>
                 <option value='23:00'>23:00</option>
                 <option value='24:00'>24:00</option>
               </select>       
-           
             </div>
             <div style={{textAlign:"center", marginTop:"50px"}}>
               

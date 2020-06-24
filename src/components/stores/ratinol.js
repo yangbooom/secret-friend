@@ -14,8 +14,10 @@ class RatinolMenu extends Component {
         intestine: 0,
         orderQuantity: 0,
         totalCost: 0,
+        pickedTime: null
     }
 
+    
     handleIncrease = (e) => {
         const {name} = e.target;
         if(name === "ddeok") {
@@ -84,18 +86,35 @@ handleDecrease = (e) => {
   }
   
 
+  handleChange = (e) => {
+    this.setState(
+      { 
+        pickedTime: e.target.value
+      }
+    );  
+  }
+
   
 
     render() {
 
-        const {ddeok, kimbab, intestine, totalCost} =this.state;
-        const time="202006262400"
+        const {ddeok, kimbab, intestine, totalCost, pickedTime} =this.state;
 
         const makeOrder = () => {
-          writeOrder(auth.currentUser.uid, 'ratinol', time, totalCost)
+          writeOrder('Nox9260J7pZaZY2IpVu7OKIKigB2', 'ratinol', pickedTime, totalCost)
         }
 
         return (    
+          <div>
+          <h3 style={{textAlign:'center'}}>시간을 선택하세요</h3>
+          <div style={{display:'flex', justifyContent:'center', marginLeft:'auto', marginRight:'auto'}}> 
+          <select value={pickedTime} onChange={this.handleChange}>
+              <option value='21:00'>21:00</option>
+              <option value='22:00'>22:00</option>
+              <option value='23:00'>23:00</option>
+              <option value='24:00'>24:00</option>
+            </select>       
+          </div>
            <div style={{textAlign:"center", marginTop:"50px"}}>
                 <h3>먹고 싶은 분식 메뉴를 선택하세요</h3>
                 <ul>
@@ -133,7 +152,7 @@ handleDecrease = (e) => {
                   </Button>
                   </div>
             </div>
-
+          </div>
         );
     }
 }
