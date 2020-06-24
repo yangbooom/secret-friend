@@ -74,13 +74,13 @@ export function writeAccount(userID, name, accountNumber, bankName) {
   console.log(userID);
 }
 
-export function writeOrder(userID, brand, menu, time, foodNumber, price) {
+export function writeOrder(userID, brand, time, price) {
   firebase.database().ref(`orders/${brand}${time}/${userID}`).push({
     ID: userID,
-    menu,
+    // menu,
     brand,
     time,
-    foodNumber,
+    // foodNumber,
     price,
   });
 }
