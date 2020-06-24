@@ -87,20 +87,12 @@ handleDecrease = (e) => {
         const {ross, fish, shrimp,totalCost} =this.state;
         const time="202006262400"
 
-        const makeRossOrder = () => {
-          writeOrder('Nox9260J7pZaZY2IpVu7OKIKigB2', 'cobaco', '로스가스', time, ross, totalCost)
-        }
-      
-        const makeFishOrder = () => {
-          writeOrder('Nox9260J7pZaZY2IpVu7OKIKigB2', 'cobaco', '생선가스', time, fish, totalCost)
-        }
-      
-        const makeShrimpOrder = () => {
-          writeOrder('Nox9260J7pZaZY2IpVu7OKIKigB2', 'cobaco', '새우돈가스', time, shrimp, totalCost)
+        const makeOrder = () => {
+          writeOrder('Nox9260J7pZaZY2IpVu7OKIKigB2', 'cobaco', time, totalCost)
         }
 
         return (
-            <div style={{textAlign:"center"}}>
+            <div style={{textAlign:"center", marginTop:"50px"}}>
                 <h3>먹고 싶은 돈까스 메뉴를 선택하세요</h3>
                 <ul>
                     <div style={styles.menu}>
@@ -126,11 +118,7 @@ handleDecrease = (e) => {
                 <h5>총 주문량: {this.state.orderQuantity}개</h5>
                 <div>
                   <Button variant="outlined" 
-                          onClick={() => {
-                                    makeRossOrder();
-                                    makeFishOrder();
-                                    makeShrimpOrder();
-                                    }}>
+                          onClick={makeOrder}>
                           주문하기
                   </Button>
                   </div>

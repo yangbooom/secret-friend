@@ -88,22 +88,15 @@ handleDecrease = (e) => {
 
     render() {
 
-        const {ddeok, kimbab, intestine} =this.state;
+        const {ddeok, kimbab, intestine, totalCost} =this.state;
+        const time="202006262400"
 
-        const makeDdeokOrder = () => {
-          writeOrder('Nox9260J7pZaZY2IpVu7OKIKigB2', 'ratinol', '떡볶이', this.time, ddeok)
-        }
-      
-        const makeKimbabOrder = () => {
-          writeOrder('Nox9260J7pZaZY2IpVu7OKIKigB2', 'ratinol', '김밥', this.time, kimbab)
-        }
-      
-        const makeIntestineOrder = () => {
-          writeOrder('Nox9260J7pZaZY2IpVu7OKIKigB2', 'ratinol', '순대', this.time, intestine)
+        const makeOrder = () => {
+          writeOrder('Nox9260J7pZaZY2IpVu7OKIKigB2', 'ratinol', time, totalCost)
         }
 
         return (    
-           <div style={{textAlign:"center"}}>
+           <div style={{textAlign:"center", marginTop:"50px"}}>
                 <h3>먹고 싶은 분식 메뉴를 선택하세요</h3>
                 <ul>
                     <div style={styles.menu}>
@@ -135,11 +128,7 @@ handleDecrease = (e) => {
                 <h5>총 주문량: {this.state.orderQuantity}개</h5>
                 <div>
                   <Button variant="outlined" 
-                          onClick={() => {
-                                    makeDdeokOrder();
-                                    makeIntestineOrder();
-                                    makeKimbabOrder();
-                                    }}>
+                          onClick={makeOrder}>
                           주문하기
                   </Button>
                   </div>

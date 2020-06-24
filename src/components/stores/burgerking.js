@@ -3,6 +3,7 @@ import {Button} from '@material-ui/core';
 import {
   auth, writeOrder
 } from '../../firebase.util';
+import Select from 'react-select'
 
 class BurgerKingMenu extends Component {
     state = {
@@ -11,8 +12,16 @@ class BurgerKingMenu extends Component {
         steak: 0,
         orderQuantity: 0,
         totalCost: 0,
+        pickedTime: null
     }
 
+    options = [
+      { value: '21:00', label: '21:00' },
+      { value: '22:00', label: '22:00' },
+      { value: '23:00', label: '23:00' },
+      { value: '24:00', label: '24:00' }
+    ]
+    
     handleIncrease = (e) => {
         const {name} = e.target;
         if(name === "mushroom") {
@@ -79,27 +88,43 @@ class BurgerKingMenu extends Component {
     })
     
 }
-    
+
+
+  handleChange = (options) => {
+    this.setState(
+      { 
+        pickedTime: this.options.value
+      }
+    );  
+  }
+
+  handleClick = () => {
+    if(this.state.pickedTime === null){
+    const {history} = this.props;
+    const unblock = history.block('시간을 먼저 설정해주셔야 합니다');
+    return () => {
+      unblock();
+    };
+  } else {
+    return ;
+  }
+  }
 
 
     render() {
-        const {mushroom, tongshrimp, steak, totalCost} =this.state;
-        const time="202006262400"
+        const {mushroom, tongshrimp, steak, totalCost, pickedTime} =this.state;
 
-        const makeMushroomOrder = () => {
-          writeOrder('Nox9260J7pZaZY2IpVu7OKIKigB2', 'burgerking', '트러플머쉬룸 와퍼세트', time, mushroom, totalCost)
-        }
-      
-        const makeTongShrimpOrder = () => {
-          writeOrder('Nox9260J7pZaZY2IpVu7OKIKigB2', 'burgerking', '통새우와퍼세트', time, tongshrimp, totalCost)
-        }
-      
-        const makeSteakOrder = () => {
-          writeOrder('Nox9260J7pZaZY2IpVu7OKIKigB2', 'burgerking', '트러플머쉬룸 스테이크버거세트', time, steak, totalCost)
+        const makeOrder = () => {
+          writeOrder('Nox9260J7pZaZY2IpVu7OKIKigB2', 'burgerking', pickedTime, totalCost)
         }
 
         return (
-            <div style={{textAlign:"center"}}>
+          <div>
+            <div>        
+              <Select value={pickedTime} options={this.options} onChange={this.handleChange}/>
+            </div>
+            <div style={{textAlign:"center", marginTop:"50px"}}>
+              
                 <h3>먹고 싶은 버거킹 메뉴를 선택하세요</h3>
                 <ul>
                     <div style={styles.menu}>
@@ -124,14 +149,11 @@ class BurgerKingMenu extends Component {
                 <h4>총합: {this.state.totalCost}원</h4>
                 <h5>총 주문량: {this.state.orderQuantity}개</h5>
                 <Button variant="outlined" 
-                          onClick={() => {
-                                    makeMushroomOrder();
-                                    makeTongShrimpOrder();
-                                    makeSteakOrder();
-                                    }}>
+                          onClick={makeOrder}>
                           주문하기
                 </Button>
             </div>
+          </div>
         );
     }
 }
