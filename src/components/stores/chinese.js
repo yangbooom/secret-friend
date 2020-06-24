@@ -84,19 +84,19 @@ handleDecrease = (e) => {
 
 
     render() {
-        const {zazang, zambong, friedrice} =this.state;
+        const {zazang, zambong, friedrice, totalCost} =this.state;
         const time="202006262330";
 
         const makeZazangOrder = () => {
-          writeOrder('Nox9260J7pZaZY2IpVu7OKIKigB2', 'chinese', '짜장면', time, zazang)
+          writeOrder('Nox9260J7pZaZY2IpVu7OKIKigB2', 'chinese', '짜장면', time, zazang, totalCost)
         }
       
         const makeZambongOrder = () => {
-          writeOrder('Nox9260J7pZaZY2IpVu7OKIKigB2', 'chinese', '짬뽕',time, zambong)
+          writeOrder('Nox9260J7pZaZY2IpVu7OKIKigB2', 'chinese', '짬뽕',time, zambong, totalCost)
         }
       
         const makeFriedRiceOrder = () => {
-          writeOrder('Nox9260J7pZaZY2IpVu7OKIKigB2', 'chinese', '볶음밥', time, friedrice)
+          writeOrder('Nox9260J7pZaZY2IpVu7OKIKigB2', 'chinese', '볶음밥', time, friedrice, totalCost)
         }
 
         return (

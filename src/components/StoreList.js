@@ -47,7 +47,6 @@ styles.nav = {
   height: '150px',
   display: 'flex',
   width: '450px',
-  position: 'absolute',
   top: '40%',
   left: '12%',
   right: '12%'
