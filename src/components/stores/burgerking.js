@@ -3,7 +3,7 @@ import {Button} from '@material-ui/core';
 import {
   auth, writeOrder
 } from '../../firebase.util';
-import Select from 'react-select'
+// import Select from 'react-select'
 
 class BurgerKingMenu extends Component {
     state = {
@@ -121,7 +121,7 @@ class BurgerKingMenu extends Component {
         return (
           <div>
             <div>        
-              <Select value={pickedTime} options={this.options} onChange={this.handleChange}/>
+              {/* <Select value={pickedTime} options={this.options} onChange={this.handleChange}/> */}
             </div>
             <div style={{textAlign:"center", marginTop:"50px"}}>
               

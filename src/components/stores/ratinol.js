@@ -92,7 +92,7 @@ handleDecrease = (e) => {
         const time="202006262400"
 
         const makeOrder = () => {
-          writeOrder('Nox9260J7pZaZY2IpVu7OKIKigB2', 'ratinol', time, totalCost)
+          writeOrder(auth.currentUser.uid, 'ratinol', time, totalCost)
         }
 
         return (    
