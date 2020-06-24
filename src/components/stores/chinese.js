@@ -12,6 +12,7 @@ class ChineseMenu extends Component {
         friedrice: 0,
         orderQuantity: 0,
         totalCost: 0,
+        pickedTime: null
     }
 
     handleIncrease = (e) => {
@@ -82,15 +83,32 @@ handleDecrease = (e) => {
     
 }
     
+  handleChange = (e) => {
+    this.setState(
+      { 
+        pickedTime: e.target.value
+      }
+    );  
+  }
+
     render() {
-        const {zazang, zambong, friedrice, totalCost} =this.state;
-        const time="202006262330";
+        const {zazang, zambong, friedrice, totalCost, pickedTime} =this.state;
 
         const makeOrder = () => {
-          writeOrder('Nox9260J7pZaZY2IpVu7OKIKigB2', 'chinese', time, totalCost)
+          writeOrder('Nox9260J7pZaZY2IpVu7OKIKigB2', 'chinese', pickedTime, totalCost)
         }
 
         return (
+          <div>
+            <h3 style={{textAlign:'center'}}>시간을 선택하세요</h3>
+            <div style={{display:'flex', justifyContent:'center', marginLeft:'auto', marginRight:'auto'}}> 
+            <select value={pickedTime} onChange={this.handleChange}>
+                <option value='21:00'>21:00</option>
+                <option value='22:00'>22:00</option>
+                <option value='23:00'>23:00</option>
+                <option value='24:00'>24:00</option>
+              </select>       
+            </div>
             <div style={{textAlign:"center", marginTop:"50px"}}>
                 <h3>먹고 싶은 중국집 메뉴를 선택하세요</h3>
                 <ul>
@@ -122,6 +140,7 @@ handleDecrease = (e) => {
                   </Button>
                 </div>
             </div>
+          </div>
         );
     }
 }
