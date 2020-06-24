@@ -4,7 +4,7 @@ import 'firebase/auth';
 import 'firebase/database';
 // var firebaseui = require('firebaseui');
 import * as firebaseui from 'firebaseui';
-import firebaseConfig from './firebase.config';
+import firebaseConfig from 'firebase.config';
 // var ui = new firebaseui.auth.AuthUI(firebase.auth());
 
 firebase.initializeApp(firebaseConfig);
