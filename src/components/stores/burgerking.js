@@ -7,6 +7,21 @@ import {
 // import api from '../../Api.js'
 
 class BurgerKingMenu extends Component {
+  loginCheck() {
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        // setValidation(true);
+        // document.location.href='/home'
+        // console.log('log in with', user.email);
+      } else {
+        // setValidation(false);
+        document.location.href='/login'
+      }
+      console.log(auth.currentUser);
+      // return (validation);
+      // setValidation(false);
+    });
+  };
   // time=
 
   link ='';
@@ -124,6 +139,7 @@ class BurgerKingMenu extends Component {
 
     render() {
         const {mushroom, tongshrimp, steak, totalCost, pickedTime} =this.state;
+        this.loginCheck()
 
         const makeOrder = () => {
           writeOrder(auth.currentUser.uid, 'burgerking', pickedTime, totalCost)
@@ -177,7 +193,7 @@ class BurgerKingMenu extends Component {
                 <h4>총합: {this.state.totalCost}원</h4>
                 <h5>총 주문량: {this.state.orderQuantity}개</h5>
                 <Button variant="outlined" 
-                          onClick={makeOrder}>
+                          onClick={makeOrder} id="payment">
                           결제하기
                   </Button>
           

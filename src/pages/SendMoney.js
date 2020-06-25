@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 // import './App.css';
 
 function SendMoney() {
+
+
   const place = '기숙사 취사실';
 
   const [check, setCheck] = useState(false);
@@ -13,6 +15,7 @@ function SendMoney() {
   });
 
   return (
+
     <div className="App">
       <form>
         {check ? (

@@ -11,7 +11,7 @@ function LoginPage() {
   const user = auth.currentUser;
   console.log(auth.currentUser);
   uiLoader('firebaseui-auth-container');
-  const name = 'hello';
+  // const name = 'hello';
   const loginCheck = () => {
     auth.onAuthStateChanged((user) => {
       if (user) {
@@ -48,12 +48,12 @@ function LoginPage() {
       <LoginImage style={{ width: '250px', padding: 30 }} />
       <div id="firebaseui-auth-container" />
       {/* <button onClick={signInWithGoogle}>Login</button> */}
-      {/* {loginCheck} */}
+      {loginCheck}
       {auth.currentUser !== null ? (
         <div>
-          <button id="submit" onClick={writeUserData(user.email, name)}>submit</button>
+          {/* <button id="submit" onClick={writeUserData(user.email, name)}>submit</button>
           <button onClick={()=> console.log(user,name)}>submit</button>
-          <button onClick={logout}>logout</button>
+          <button onClick={logout}>logout</button> */}
         </div>
       ) : (
         <div>

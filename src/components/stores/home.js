@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 class Home extends Component { 
 
     render() { 
+        this.loginCheck()
         return ( 
             <div style={{textAlign:'center'}}> 
                 <h2>오늘 뭐먹지?</h2>

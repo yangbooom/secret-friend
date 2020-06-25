@@ -7,6 +7,21 @@ import {
 // import api from '../../Api.js'
 
 class CobacoMenu extends Component {
+  loginCheck() {
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        // setValidation(true);
+        // document.location.href='/home'
+        // console.log('log in with', user.email);
+      } else {
+        // setValidation(false);
+        document.location.href='/login'
+      }
+      console.log(auth.currentUser);
+      // return (validation);
+      // setValidation(false);
+    });
+  };
     
   link ='';
   scheme='';
@@ -120,6 +135,7 @@ handleDecrease = (e) => {
 
 
     render() {
+        this.loginCheck()
         const {ross, fish, shrimp,totalCost, pickedTime} =this.state;
 
         const makeOrder = () => {
